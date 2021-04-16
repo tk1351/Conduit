@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { useAppDispatch } from '../app/hooks'
-import { toggle } from '../features/testSlice'
+import React from 'react'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
+import { toggle, selectChecked } from '../features/testSlice'
 
 const App = () => {
   const dispatch = useAppDispatch()
-  const [checked] = useState<boolean>(false)
-  const onClick = () => dispatch(toggle(checked))
+  const isChecked = useAppSelector(selectChecked)
+  const onClick = () => dispatch(toggle())
   return (
     <div>
       <h1>Hello world</h1>
@@ -13,6 +13,7 @@ const App = () => {
         Learn Redux
         <input type="checkbox" onClick={onClick} />
       </div>
+      <div>{isChecked ? <h2>Done!</h2> : null}</div>
     </div>
   )
 }

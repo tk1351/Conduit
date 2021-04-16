@@ -53,7 +53,9 @@ describe('Dispatch', () => {
       </Provider>
     )
     expect(screen.getByRole('checkbox')).not.toBeChecked()
+    expect(screen.queryByText('Done!')).toBeNull()
     userEvent.click(screen.getByRole('checkbox'))
     expect(screen.getByRole('checkbox')).toBeChecked()
+    expect(screen.getByText('Done!')).toBeInTheDocument()
   })
 })

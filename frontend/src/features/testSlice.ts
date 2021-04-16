@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { RootState } from '../app/store'
 
 export interface TestState {
   checked: boolean
@@ -12,12 +13,14 @@ export const testSlice = createSlice({
   name: 'test',
   initialState,
   reducers: {
-    toggle: (state, action: PayloadAction<boolean>) => {
+    toggle: (state) => {
       return { ...state, checked: !state.checked }
     },
   },
 })
 
 export const { toggle } = testSlice.actions
+
+export const selectChecked = (state: RootState) => state.test.checked
 
 export default testSlice.reducer
