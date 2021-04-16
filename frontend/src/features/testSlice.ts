@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface TestState {
+export interface TestState {
   checked: boolean
 }
 
