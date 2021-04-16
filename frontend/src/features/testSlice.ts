@@ -2,25 +2,21 @@ import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
 
 export interface TestState {
-  checked: boolean
+  appName: string
+  articles: string[]
 }
 
 const initialState: TestState = {
-  checked: false,
+  appName: 'Conduit',
+  articles: [],
 }
 
 export const testSlice = createSlice({
   name: 'test',
   initialState,
-  reducers: {
-    toggle: (state) => {
-      return { ...state, checked: !state.checked }
-    },
-  },
+  reducers: {},
 })
 
-export const { toggle } = testSlice.actions
-
-export const selectChecked = (state: RootState) => state.test.checked
+export const selectAppName = (state: RootState) => state.test.appName
 
 export default testSlice.reducer
