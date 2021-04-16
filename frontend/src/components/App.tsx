@@ -1,10 +1,14 @@
-import React from 'react'
-import { useAppSelector } from '../app/hooks'
-import { selectAppName } from '../features/testSlice'
+import React, { FC } from 'react'
+import Header from './Header'
+import Home from './Home/Home'
 
-const App = () => {
-  const appName = useAppSelector(selectAppName)
-  return <div>{appName}</div>
+const App: FC = () => {
+  return (
+    <div>
+      <Header />
+      <Home />
+    </div>
+  )
 }
 
 export default App

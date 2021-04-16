@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
 
+export interface ArticleState {
+  title: string
+}
+
 export interface TestState {
   appName: string
-  articles: string[]
+  articles: ArticleState[]
 }
 
 const initialState: TestState = {
@@ -18,5 +22,6 @@ export const testSlice = createSlice({
 })
 
 export const selectAppName = (state: RootState) => state.test.appName
+export const selectArticles = (state: RootState) => state.test.articles
 
 export default testSlice.reducer

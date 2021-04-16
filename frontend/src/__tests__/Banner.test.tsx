@@ -1,12 +1,10 @@
 import React from 'react'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { Provider } from 'react-redux'
-import App from '../components/App'
 import { configureStore, EnhancedStore } from '@reduxjs/toolkit'
 import testReducer, { TestState } from '../features/testSlice'
-
-afterEach(() => cleanup())
+import Banner from '../components/Home/Banner'
 
 describe('Rendering', () => {
   let store: EnhancedStore<{ test: TestState }>
@@ -17,12 +15,15 @@ describe('Rendering', () => {
       },
     })
   })
-  it('Should render appName', () => {
+  it('Should render text', () => {
     render(
       <Provider store={store}>
-        <App />
+        <Banner />
       </Provider>
     )
-    expect(screen.getByText('Conduit')).toBeInTheDocument()
+    expect(screen.getByText('conduit')).toBeInTheDocument()
+    expect(
+      screen.getByText('A place to share your knowledge.')
+    ).toBeInTheDocument()
   })
 })
